@@ -10,13 +10,13 @@ public class GlobalException extends RuntimeException {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<String> handleNotFound(Exception e) {
-        return ResponseEntity.status(432).body(e.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
     }
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleUnwantedException(Exception e){
         e.printStackTrace();
-        return ResponseEntity.status(500).body("Unknow error");
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unknow error");
     }
 
 }
